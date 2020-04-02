@@ -1,8 +1,9 @@
 
 
-category1 = "produits-laitiers"
-category2 = "viandes"
-category3 = "produits-a-tartiner"
-category4 = "biscuits-et-gateaux"
-category5 = "boissons"
+category = ["produits-laitiers",
+            "viandes",
+            "produits-a-tartiner",
+            "biscuits-et-gateaux",
+            "boissons"]
 
+X = 50
