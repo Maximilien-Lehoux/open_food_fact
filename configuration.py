@@ -1,4 +1,5 @@
 
+url_general = 'https://fr.openfoodfacts.org/categorie/'
 
 category = ["produits-laitiers",
             "viandes",
@@ -6,4 +7,4 @@ category = ["produits-laitiers",
             "biscuits-et-gateaux",
             "boissons"]
 
-X = 50
+number_products = 50

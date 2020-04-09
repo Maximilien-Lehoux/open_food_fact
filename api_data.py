@@ -1,6 +1,9 @@
 import json
 import requests
 
+from configuration import *
+from constant import *
+
 payload = {
     'action': 'process',
     'tagtype_0': 'categories',
@@ -9,15 +12,12 @@ payload = {
     'tagtype_1': 'nutrition_grade',
     'tag_contains_1': 'contains',
     'fields': ','.join(API_TO_PRODUCT_FIELDS.keys()),
-    'page_size': nb,
+    'page_size': number_products,
     'json': 'true',
 }
 
+
 class DataApi:
     def __init__(self, url):
-        self.response = requests.get(url)
+        self.response = requests.get(url, params=payload)
         self.data = self.response.json()
-
-    def upload_json_file(self, file_json, data):
-        with open(file_json, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4)
