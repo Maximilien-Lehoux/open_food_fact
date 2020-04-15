@@ -19,22 +19,22 @@ class Main:
         i = 0
         while i < 5:
             products = DataApi("{}{}".format(url_general, categories[i]))
-            name_products = products.select_key(products.data['products'], 'product_name_fr',
-                                                temporary_list_product_name)
-            generic_name_products = products.select_key(products.data['products'], 'generic_name_fr',
-                                                        temporary_list_generic_name)
-            brands_products = products.select_key(products.data['products'], 'brands', temporary_list_brands)
-            url_products = products.select_key(products.data['products'], 'url', temporary_list_url)
-            stores_products = products.select_key(products.data['products'], 'stores', temporary_list_stores)
-            nutrition_grade_fr_products = products.select_key(products.data['products'], 'nutrition_grade_fr',
-                                                              temporary_list_nutrition)
+            self.name_products = products.select_key(products.data['products'], 'product_name_fr',
+                                                     temporary_list_product_name)
+            self.generic_name_products = products.select_key(products.data['products'], 'generic_name_fr',
+                                                             temporary_list_generic_name)
+            self.url_products = products.select_key(products.data['products'], 'url', temporary_list_url)
+            self.store_products = products.select_key(products.data['products'], 'stores', temporary_list_stores)
+            self.nutriscore_products = products.select_key(products.data['products'], 'nutrition_grade_fr',
+                                                           temporary_list_nutrition)
             i += 1
-        # print(name_products)
 
     def tables_open_food_fact(self):
         my_tables = CreateDataBase()
         my_tables.create_tables()
         my_tables.insert_categories()
+        my_tables.insert_products(self.name_products, self.generic_name_products,
+                                  self.url_products, self.store_products, self.nutriscore_products)
 
     def init_categories(self):
         self.get_products_key_from_api()

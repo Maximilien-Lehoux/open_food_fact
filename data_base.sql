@@ -34,10 +34,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NULL,
-  `generic_name` VARCHAR(100) NULL,
-  `nutriscore` VARCHAR(45) NULL,
-  `store` VARCHAR(45) NULL,
+  `name` VARCHAR(255) NULL,
+  `generic_name` VARCHAR(255) NULL,
+  `nutriscore` VARCHAR(255) NULL,
+  `store` VARCHAR(255) NULL,
   `url` VARCHAR(255) NULL,
   `categories_id` INT NOT NULL,
   PRIMARY KEY (`id`),

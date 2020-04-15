@@ -7,7 +7,8 @@ categories = ["produits-laitiers",
             "biscuits-et-gateaux",
             "boissons"]
 
-number_products = 50
+number_categories = 5
+number_products = 20
 
 HOST = "localhost"
 USER = "root"

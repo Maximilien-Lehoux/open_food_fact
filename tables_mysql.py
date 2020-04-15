@@ -33,3 +33,15 @@ class CreateDataBase:
             self.cursor.execute("""INSERT INTO categories (name) VALUES(%s)""", (str(categories[i]),))
             i += 1
         self.connection.commit()
+
+    def insert_products(self, name, generic_name, url, store, nutriscore):
+        i = 0
+        j = 1
+        while i < number_products * number_categories:
+            self.cursor.execute("""INSERT INTO products (name, generic_name, nutriscore, store, url, 
+            categories_id) VALUES(%s, %s, %s, %s, %s, %s)""", (str(name[i]), str(generic_name[i]), str(nutriscore[i]),
+                                                               str(url[i]), str(store[i]), j))
+            i += 1
+            if i == (number_products * j) and j < number_categories:
+                j += 1
+        self.connection.commit()
