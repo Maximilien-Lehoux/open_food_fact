@@ -8,3 +8,8 @@ category = ["produits-laitiers",
             "boissons"]
 
 number_products = 50
+
+HOST = "localhost"
+USER = "root"
+PASSWORD = "Veronicamars2991"
+DATABASE = "open_food_fact"
