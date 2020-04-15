@@ -18,7 +18,7 @@ class Main:
     def get_products_key_from_api(self):
         i = 0
         while i < 5:
-            products = DataApi("{}{}".format(url_general, category[i]))
+            products = DataApi("{}{}".format(url_general, categories[i]))
             name_products = products.select_key(products.data['products'], 'product_name_fr',
                                                 temporary_list_product_name)
             generic_name_products = products.select_key(products.data['products'], 'generic_name_fr',
@@ -32,8 +32,9 @@ class Main:
         # print(name_products)
 
     def tables_open_food_fact(self):
-        my_table = CreateDataBase()
-        my_table.create_tables()
+        my_tables = CreateDataBase()
+        my_tables.create_tables()
+        my_tables.insert_categories()
 
     def init_categories(self):
         self.get_products_key_from_api()

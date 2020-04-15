@@ -8,7 +8,7 @@ payload_products = {
     'action': 'process',
     'tagtype_0': 'categories',
     'tag_contains_0': 'contains',
-    'tag_0': category,
+    'tag_0': categories,
     'tagtype_1': 'nutrition_grade',
     'tag_contains_1': 'contains',
     'fields': ','.join(API_TO_PRODUCT_FIELDS.keys()),

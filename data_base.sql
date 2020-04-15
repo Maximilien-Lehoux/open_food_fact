@@ -20,6 +20,7 @@ USE `open_food_fact` ;
 -- -----------------------------------------------------
 -- Table `open_food_fact`.`categories`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
@@ -30,6 +31,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `open_food_fact`.`products`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
@@ -51,6 +53,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `open_food_fact`.`substitute_choose`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `substitute_choose`;
 CREATE TABLE IF NOT EXISTS `substitute_choose` (
   `products_id` INT NOT NULL,
   `substitute` VARCHAR(45) NULL,
