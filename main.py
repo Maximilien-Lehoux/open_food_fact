@@ -38,20 +38,25 @@ class Main:
 
     def display_data_open_food_fact(self):
         my_menu = Menu()
+        my_data = CreateDataBase()
         main_choice = my_menu.main_menu()
 
         if main_choice == "1":
-            my_data = CreateDataBase()
+
             my_data.display_categories()
 
             category_choice = my_menu.menu_category()
             my_data.display_products(category_choice)
 
-            product_choice = my_menu.menu_category()
+            number_products_choice = my_menu.menu_products()
             my_data.display_substitutes(category_choice)
 
+            print(number_products_choice)
+            number_substitute_choiced = my_menu.menu_choice_substitute()
+            my_data.saved_substitute(number_substitute_choiced, number_products_choice)
+
         elif main_choice == "2":
-            print("Hélyan et trop fort")
+            my_data.display_substitute_saved()
 
         elif main_choice == "3":
             self.create_tables_open_food_fact()

@@ -46,6 +46,16 @@ class CreateDataBase:
                 j += 1
         self.connection.commit()
 
+    def saved_substitute(self, number_choice, product_id):
+        self.cursor.execute("""SELECT name FROM products WHERE id = {}""".format(number_choice))
+        result = self.cursor.fetchone()
+        for x in result:
+            name_product = x
+        self.cursor.execute("""INSERT INTO substitute_choose (products_id, substitute) VALUES(%s, %s)""",
+                            (str(product_id), str(name_product)))
+        print(name_product)
+        self.connection.commit()
+
     def display_categories(self):
         self.cursor.execute("""SELECT id, name  FROM categories""")
         result = self.cursor.fetchall()
@@ -62,6 +72,13 @@ class CreateDataBase:
     def display_substitutes(self, category_id):
         self.cursor.execute("""SELECT id, name, generic_name, nutriscore, store, url FROM products 
                 WHERE categories_id = {} AND nutriscore = 'a'""".format(category_id))
+        result = self.cursor.fetchall()
+        for x in result:
+            print(x)
+
+    def display_substitute_saved(self):
+        self.cursor.execute("""SELECT id, substitute, name 
+        FROM substitute_choose INNER JOIN products ON products_id = id""")
         result = self.cursor.fetchall()
         for x in result:
             print(x)

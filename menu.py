@@ -21,6 +21,12 @@ class Menu:
 
     def menu_products(self):
         choice = input("Choisissez un aliment que vous souhaitez substituer : ")
+        return choice
+
+    def menu_choice_substitute(self):
+        number_choice = input("Choisissez un substitut que vous souhaitez sauvegarder en notant son nombre "
+                              "correspondant : ")
+        return number_choice
 
 
 

@@ -56,7 +56,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `substitute_choose`;
 CREATE TABLE IF NOT EXISTS `substitute_choose` (
   `products_id` INT NOT NULL,
-  `substitute` VARCHAR(45) NULL,
+  `substitute` VARCHAR(255) NULL,
   INDEX `fk_substitute_choose_products1_idx` (`products_id` ASC) VISIBLE,
   CONSTRAINT `fk_substitute_choose_products1`
     FOREIGN KEY (`products_id`)
