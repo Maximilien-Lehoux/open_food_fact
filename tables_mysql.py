@@ -45,3 +45,23 @@ class CreateDataBase:
             if i == (number_products * j) and j < number_categories:
                 j += 1
         self.connection.commit()
+
+    def display_categories(self):
+        self.cursor.execute("""SELECT id, name  FROM categories""")
+        result = self.cursor.fetchall()
+        for x in result:
+            print(x)
+
+    def display_products(self, category_id):
+        self.cursor.execute("""SELECT id, name, generic_name, nutriscore, store, url FROM products 
+        WHERE categories_id = {}""".format(category_id))
+        result = self.cursor.fetchall()
+        for x in result:
+            print(x)
+
+    def display_substitutes(self, category_id):
+        self.cursor.execute("""SELECT id, name, generic_name, nutriscore, store, url FROM products 
+                WHERE categories_id = {} AND nutriscore = 'a'""".format(category_id))
+        result = self.cursor.fetchall()
+        for x in result:
+            print(x)

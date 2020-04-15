@@ -5,7 +5,7 @@ import mysql
 
 from api_data import *
 from constant import *
-# from connection_mysql import *
+from menu import *
 
 from tables_mysql import *
 
@@ -13,7 +13,7 @@ from tables_mysql import *
 class Main:
 
     def __init__(self):
-        self.init_categories()
+        self.init_program()
 
     def get_products_key_from_api(self):
         i = 0
@@ -29,16 +29,36 @@ class Main:
                                                            temporary_list_nutrition)
             i += 1
 
-    def tables_open_food_fact(self):
+    def create_tables_open_food_fact(self):
         my_tables = CreateDataBase()
         my_tables.create_tables()
         my_tables.insert_categories()
         my_tables.insert_products(self.name_products, self.generic_name_products,
                                   self.url_products, self.store_products, self.nutriscore_products)
 
-    def init_categories(self):
+    def display_data_open_food_fact(self):
+        my_menu = Menu()
+        main_choice = my_menu.main_menu()
+
+        if main_choice == "1":
+            my_data = CreateDataBase()
+            my_data.display_categories()
+
+            category_choice = my_menu.menu_category()
+            my_data.display_products(category_choice)
+
+            product_choice = my_menu.menu_category()
+            my_data.display_substitutes(category_choice)
+
+        elif main_choice == "2":
+            print("Hélyan et trop fort")
+
+        elif main_choice == "3":
+            self.create_tables_open_food_fact()
+
+    def init_program(self):
         self.get_products_key_from_api()
-        self.tables_open_food_fact()
+        self.display_data_open_food_fact()
 
 
 if __name__ == "__main__":
