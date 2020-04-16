@@ -1,12 +1,10 @@
-import json
-import requests
 import mysql.connector
 import mysql
+import sys
 
 from api_data import *
 from constant import *
 from menu import *
-
 from tables_mysql import *
 
 
@@ -60,6 +58,9 @@ class Main:
 
         elif main_choice == "3":
             self.create_tables_open_food_fact()
+
+        elif main_choice == "4":
+            sys.exit(0)
 
     def init_program(self):
         self.get_products_key_from_api()
