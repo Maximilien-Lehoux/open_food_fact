@@ -32,7 +32,7 @@ class CreateDataBase:
         """the categories are inserted in the tables"""
         i = 0
         while i < 5:
-            self.cursor.execute("""INSERT INTO categories (name) VALUES(%s)""", (str(categories[i]),))
+            self.cursor.execute("""INSERT INTO categories (name) VALUES(%s)""", (str(CATEGORIES[i]),))
             i += 1
         self.connection.commit()
 

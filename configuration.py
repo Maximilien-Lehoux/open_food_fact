@@ -4,10 +4,10 @@ URL_GENERAL = 'https://fr.openfoodfacts.org/categorie/'
 # you can change the categories. If you don't know them all, go to this site https://fr.openfoodfacts.org/categories
 # and note the category in lowercase without accent and putting dashes between the words as in the example above
 CATEGORIES = ["produits-laitiers",
-            "viandes",
+            "cereales-et-pommes-de-terre",
             "produits-a-tartiner",
             "biscuits-et-gateaux",
-            "boissons"]
+            "aliments-et-boissons-a-base-de-vegetaux"]
 number_categories = 5
 
 # The number of products per category
