@@ -1,3 +1,4 @@
+# the parameters when launching the API
 API_TO_PRODUCT_FIELDS = {
     'product_name_fr': 'name',
     'generic_name_fr': 'full_name',

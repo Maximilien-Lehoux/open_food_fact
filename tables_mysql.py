@@ -5,7 +5,7 @@ from configuration import *
 
 
 class CreateDataBase:
-
+    """allows you to create and display tables"""
     def __init__(self):
         self.connection = mysql.connector.connect(
             user=USER,
@@ -16,6 +16,7 @@ class CreateDataBase:
         self.cursor = self.connection.cursor()
 
     def create_tables(self):
+        """creation of tables via sql file"""
         query = ''
         with open("data_base.sql", "r") as f:
             lines = f.readlines()
@@ -28,6 +29,7 @@ class CreateDataBase:
         self.connection.commit()
 
     def insert_categories(self):
+        """the categories are inserted in the tables"""
         i = 0
         while i < 5:
             self.cursor.execute("""INSERT INTO categories (name) VALUES(%s)""", (str(categories[i]),))
@@ -35,6 +37,7 @@ class CreateDataBase:
         self.connection.commit()
 
     def insert_products(self, name, generic_name, url, store, nutriscore):
+        """the products are inserted in the tables"""
         i = 0
         j = 1
         while i < number_products * number_categories:
@@ -47,6 +50,7 @@ class CreateDataBase:
         self.connection.commit()
 
     def saved_substitute(self, number_choice, product_id):
+        """the products chosen by the user are saved in the table"""
         self.cursor.execute("""SELECT name FROM products WHERE id = {}""".format(number_choice))
         result = self.cursor.fetchone()
         for x in result:
@@ -57,12 +61,14 @@ class CreateDataBase:
         self.connection.commit()
 
     def display_categories(self):
+        """categories are displayed"""
         self.cursor.execute("""SELECT id, name  FROM categories""")
         result = self.cursor.fetchall()
         for x in result:
             print(x)
 
     def display_products(self, category_id):
+        """products are displayed"""
         self.cursor.execute("""SELECT id, name, generic_name, nutriscore, store, url FROM products 
         WHERE categories_id = {}""".format(category_id))
         result = self.cursor.fetchall()
@@ -70,6 +76,7 @@ class CreateDataBase:
             print(x)
 
     def display_substitutes(self, category_id):
+        """Substitutes are displayed"""
         self.cursor.execute("""SELECT id, name, generic_name, nutriscore, store, url FROM products 
                 WHERE categories_id = {} AND nutriscore = 'a'""".format(category_id))
         result = self.cursor.fetchall()
@@ -77,6 +84,7 @@ class CreateDataBase:
             print(x)
 
     def display_substitute_saved(self):
+        """saved substitutes are displayed"""
         self.cursor.execute("""SELECT id, substitute, name 
         FROM substitute_choose INNER JOIN products ON products_id = id""")
         result = self.cursor.fetchall()
