@@ -14,17 +14,9 @@ payload_products = {
     'tagtype_1': 'nutrition_grade',
     'tag_contains_1': 'contains',
     'fields': ','.join(API_TO_PRODUCT_FIELDS.keys()),
-    'page_size': number_products,
+    'page_size': NUMBER_PRODUCTS,
     'json': 'true',
 }
-
-temporary_list_product_name = []
-temporary_list_generic_name = []
-temporary_list_brands = []
-temporary_list_url = []
-temporary_list_stores = []
-temporary_list_nutrition = []
-
 
 class DataApi:
     """the request to the API which contains the parameters"""

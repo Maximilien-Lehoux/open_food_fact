@@ -56,11 +56,11 @@ class Main:
             my_data.display_products(category_choice)
 
             # the substitutes for the chosen product are displayed
-            number_products_choice = my_menu.menu_products()
+            number_products_choice = my_menu.menu_products(int(category_choice))
             my_data.display_substitutes(category_choice)
 
             # the user chooses a substitute and saves it in the database
-            number_substitute_choiced = my_menu.menu_choice_substitute()
+            number_substitute_choiced = my_menu.menu_choice_substitute(int(category_choice))
             my_data.saved_substitute(number_substitute_choiced, number_products_choice)
 
         # the user chooses "2" to see his registered substitutes

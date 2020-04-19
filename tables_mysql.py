@@ -40,12 +40,12 @@ class CreateDataBase:
         """the products are inserted in the tables"""
         i = 0
         j = 1
-        while i < number_products * number_categories:
+        while i < NUMBER_PRODUCTS * len(CATEGORIES):
             self.cursor.execute("""INSERT INTO products (name, generic_name, nutriscore, store, url, 
             categories_id) VALUES(%s, %s, %s, %s, %s, %s)""", (str(name[i]), str(generic_name[i]), str(nutriscore[i]),
                                                                str(url[i]), str(store[i]), j))
             i += 1
-            if i == (number_products * j) and j < number_categories:
+            if i == (NUMBER_PRODUCTS * j) and j < len(CATEGORIES):
                 j += 1
         self.connection.commit()
 
@@ -85,7 +85,8 @@ class CreateDataBase:
 
     def display_substitute_saved(self):
         """saved substitutes are displayed"""
-        self.cursor.execute("""SELECT id, substitute, name 
+        print("Le premier produit noté entre guillemet est le substitut du deuxième :")
+        self.cursor.execute("""SELECT substitute, name 
         FROM substitute_choose INNER JOIN products ON products_id = id""")
         result = self.cursor.fetchall()
         for x in result:
