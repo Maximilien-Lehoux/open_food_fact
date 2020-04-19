@@ -19,13 +19,13 @@ class Main:
         while i < 5:
             products = DataApi("{}{}".format(URL_GENERAL, CATEGORIES[i]))
             self.name_products = products.select_key(products.data['products'], 'product_name_fr',
-                                                     temporary_list_product_name)
+                                                     TEMPORARY_LIST_NAME)
             self.generic_name_products = products.select_key(products.data['products'], 'generic_name_fr',
-                                                             temporary_list_generic_name)
-            self.url_products = products.select_key(products.data['products'], 'url', temporary_list_url)
-            self.store_products = products.select_key(products.data['products'], 'stores', temporary_list_stores)
+                                                             TEMPORARY_LIST_GENERIC_NAME)
+            self.url_products = products.select_key(products.data['products'], 'url', TEMPORARY_LIST_URL)
+            self.store_products = products.select_key(products.data['products'], 'stores', TEMPORARY_LIST_STORES)
             self.nutriscore_products = products.select_key(products.data['products'], 'nutrition_grade_fr',
-                                                           temporary_list_nutrition)
+                                                           TEMPORARY_LIST_NUTRITION)
             i += 1
 
     def create_tables_open_food_fact(self):

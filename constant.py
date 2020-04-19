@@ -10,9 +10,8 @@ API_TO_PRODUCT_FIELDS = {
 
 URL_GENERAL = 'https://fr.openfoodfacts.org/categorie/'
 
-temporary_list_product_name = []
-temporary_list_generic_name = []
-temporary_list_brands = []
-temporary_list_url = []
-temporary_list_stores = []
-temporary_list_nutrition = []
+TEMPORARY_LIST_NAME = []
+TEMPORARY_LIST_GENERIC_NAME = []
+TEMPORARY_LIST_URL = []
+TEMPORARY_LIST_STORES = []
+TEMPORARY_LIST_NUTRITION = []
