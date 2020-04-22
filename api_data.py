@@ -1,8 +1,7 @@
-import json
 import requests
 
-from configuration import *
-from constant import *
+from configuration import CATEGORIES, NUMBER_PRODUCTS
+from constant import API_TO_PRODUCT_FIELDS
 
 # the parameters when calling the API. the categories can be modified
 # in the configuration.py file as well as the number of products by category
@@ -18,6 +17,7 @@ payload_products = {
     'json': 'true',
 }
 
+
 class DataApi:
     """the request to the API which contains the parameters"""
     def __init__(self, url):
@@ -26,7 +26,6 @@ class DataApi:
 
     def select_key(self, data, key, selected_list):
         """The different keys are sorted and placed in lists"""
-        # selected_list = []
         for item in data:
             selected_list.append(item.get(key))
         return selected_list

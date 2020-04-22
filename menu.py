@@ -1,4 +1,5 @@
-from configuration import *
+from configuration import NUMBER_PRODUCTS
+
 
 class Menu:
     def __init__(self):
@@ -12,12 +13,14 @@ class Menu:
         print("4 : Quitter le programme")
         choice = ""
         while choice not in ["1", "2", "3", "4"]:
-            choice = input("Choisissez une option (si vous utilisez le programme pour la première fois, "
-                           "réinitialisez la base de donnée avec le choix 3 : ")
+            choice = input("""Choisissez une option (si vous utilisez le
+            programme pour la première fois, réinitialisez la base de donnée
+            avec le choix 3 : """)
         return choice
 
     def menu_category(self):
-        """when the choice "1" is made, the category menu displays the 5 categories chosen in the configuration file"""
+        """when the choice "1" is made, the category menu displays the 5
+        categories chosen in the configuration file"""
         choice = ""
         while choice not in ["1", "2", "3", "4", "5"]:
             choice = input("Choisissez une catégorie d'aliment : ")
@@ -26,8 +29,10 @@ class Menu:
     def menu_products(self, choice_category):
         """in the product menu, the user chooses one"""
         choice = 0
-        while choice <= 20 * (choice_category - 1) or choice > NUMBER_PRODUCTS * choice_category:
-            choice = input("Choisissez un aliment que vous souhaitez substituer : ")
+        while choice <= 20 * (choice_category - 1) \
+                or choice > NUMBER_PRODUCTS * choice_category:
+            choice = input("""Choisissez un aliment que vous souhaitez
+                           substituer : """)
             choice = int(choice)
         choice = str(choice)
         return choice
@@ -35,12 +40,11 @@ class Menu:
     def menu_choice_substitute(self, choice_category):
         """the user chooses one of the substitutes"""
         choice = 0
-        while choice <= 20 * (choice_category - 1) or choice > NUMBER_PRODUCTS * choice_category:
-            choice = input("Choisissez un substitut que vous souhaitez sauvegarder en notant son nombre "
-                                  "correspondant : ")
+        while choice <= 20 * (choice_category - 1) \
+                or choice > NUMBER_PRODUCTS * choice_category:
+            choice = input("""Choisissez un substitut que vous souhaitez
+                           sauvegarder en notant son nombre
+                           correspondant : """)
             choice = int(choice)
         choice = str(choice)
         return choice
-
-
-
