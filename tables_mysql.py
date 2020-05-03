@@ -37,21 +37,18 @@ class CreateDataBase:
             i += 1
         self.connection.commit()
 
-    def insert_products(self, name, generic_name, url, store, nutriscore):
-        """the products are inserted in the tables"""
-        i = 0
-        j = 1
-        while i < NUMBER_PRODUCTS * len(CATEGORIES):
-            self.cursor.execute("""INSERT INTO products (name, generic_name,
-            nutriscore, store, url, categories_id)
-            VALUES(%s, %s, %s, %s, %s, %s)""",
-                                (str(name[i]), str(generic_name[i]),
-                                 str(nutriscore[i]), str(url[i]),
-                                 str(store[i]), j))
-            i += 1
-            if i == (NUMBER_PRODUCTS * j) and j < len(CATEGORIES):
-                j += 1
+    def insert_product(self, product):
+        self.cursor.execute("""INSERT INTO Products (name, generic_name, url, 
+        store, nutriscore, categories_id) 
+        VALUES (%s, %s, %s, %s, %s, %s)""",
+                            (str(product[0]), str(product[1]), str(product[2]),
+                             str(product[3]), str(product[4]),
+                             str(product[5])))
         self.connection.commit()
+
+    def insert_products(self, products):
+        for i in range(0, len(products)):
+            self.insert_product(products[i])
 
     def saved_substitute(self, number_choice, product_id):
         """the products chosen by the user are saved in the table"""
@@ -66,37 +63,31 @@ class CreateDataBase:
         print(name_product)
         self.connection.commit()
 
-    def display_categories(self):
-        """categories are displayed"""
+    def get_categories(self):
         self.cursor.execute("""SELECT id, name  FROM categories""")
         result = self.cursor.fetchall()
-        for x in result:
-            print(x)
+        return result
 
-    def display_products(self, category_id):
-        """products are displayed"""
+    def get_products_from_category(self, category_id):
         self.cursor.execute("""SELECT id, name, generic_name, nutriscore,
         store, url FROM products WHERE categories_id = {}"""
                             .format(category_id))
         result = self.cursor.fetchall()
-        for x in result:
-            print(x)
+        return result
 
-    def display_substitutes(self, category_id):
+    def get_substitutes(self, category_id):
         """Substitutes are displayed"""
         self.cursor.execute("""SELECT id, name, generic_name, nutriscore,
-        store, url FROM products WHERE categories_id = {}
-        AND nutriscore = 'a'""".format(category_id))
+                store, url FROM products WHERE categories_id = {}
+                AND nutriscore = 'a'""".format(category_id))
         result = self.cursor.fetchall()
-        for x in result:
-            print(x)
+        return result
 
-    def display_substitute_saved(self):
-        """saved substitutes are displayed"""
+    def get_substitutes_saved(self):
         print("""Le premier produit noté entre guillemet est le substitut du
-        deuxième :""")
+                deuxième :""")
         self.cursor.execute("""SELECT substitute, name
-        FROM substitute_choose INNER JOIN products ON products_id = id""")
+            FROM substitute_choose INNER JOIN products ON products_id = id""")
         result = self.cursor.fetchall()
-        for x in result:
-            print(x)
+        return result
+

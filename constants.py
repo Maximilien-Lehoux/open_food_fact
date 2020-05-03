@@ -8,10 +8,7 @@ API_TO_PRODUCT_FIELDS = {
     'category': 'category'
     }
 
+# the address that allows you to use the open_food_fact API
 URL_GENERAL = 'https://fr.openfoodfacts.org/categorie/'
 
-TEMPORARY_LIST_NAME = []
-TEMPORARY_LIST_GENERIC_NAME = []
-TEMPORARY_LIST_URL = []
-TEMPORARY_LIST_STORES = []
-TEMPORARY_LIST_NUTRITION = []
+LIST_GENERAL = []
