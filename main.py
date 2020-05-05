@@ -55,7 +55,7 @@ class Main:
 
             # the substitutes for the chosen product are displayed
             number_products_choice = my_menu.menu_products(
-                int(category_choice))
+                len(self.products))
             self.display_data.display_substitutes(category_choice)
 
             # the user chooses a substitute and saves it in the database
@@ -70,7 +70,6 @@ class Main:
 
         # the user chooses "3" to reset the database
         elif main_choice == "3":
-            self.get_products_key_from_api_test()
             self.create_tables_open_food_fact()
             self.insert_data_tables_mysql()
 
@@ -79,6 +78,7 @@ class Main:
             sys.exit(0)
 
     def init_program(self):
+        self.get_products_key_from_api_test()
         self.display_data_open_food_fact()
 
 

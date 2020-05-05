@@ -76,7 +76,6 @@ class CreateDataBase:
         return result
 
     def get_substitutes(self, category_id):
-        """Substitutes are displayed"""
         self.cursor.execute("""SELECT id, name, generic_name, nutriscore,
                 store, url FROM products WHERE categories_id = {}
                 AND nutriscore = 'a'""".format(category_id))
@@ -84,8 +83,6 @@ class CreateDataBase:
         return result
 
     def get_substitutes_saved(self):
-        print("""Le premier produit noté entre guillemet est le substitut du
-                deuxième :""")
         self.cursor.execute("""SELECT substitute, name
             FROM substitute_choose INNER JOIN products ON products_id = id""")
         result = self.cursor.fetchall()

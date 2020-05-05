@@ -1,3 +1,4 @@
+import sys
 from tables_mysql import *
 
 
@@ -17,12 +18,22 @@ class DisplayData(CreateDataBase):
 
     def display_substitutes(self, category_id):
         results = self.get_substitutes(category_id)
-        self.display_db_query_results(results)
+        if not results:
+            print("Il n'y a pas de subsituts en nutriscore 'a', vous pouvez "
+                  "augmenter le nombre de produits où changer de catégories.")
+            sys.exit(0)
+        else:
+            self.display_db_query_results(results)
 
     def display_substitutes_saved(self):
         """saved substitutes are displayed"""
         results = self.get_substitutes_saved()
-        self.display_db_query_results(results)
+        if not results:
+            print("Vous n'avez pas enregistré de produits.")
+        else:
+            print("""Le premier produit noté entre guillemet est le substitut 
+            du deuxième :""")
+            self.display_db_query_results(results)
 
     def display_db_query_results(self, results):
         for x in results:
