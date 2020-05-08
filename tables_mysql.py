@@ -60,7 +60,6 @@ class CreateDataBase:
         self.cursor.execute("""INSERT INTO substitute_choose
         (products_id, substitute) VALUES(%s, %s)""",
                             (str(product_id), str(name_product)))
-        print(name_product)
         self.connection.commit()
 
     def get_categories(self):

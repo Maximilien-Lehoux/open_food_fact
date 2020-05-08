@@ -1,7 +1,7 @@
 import requests
 
 from configuration import CATEGORIES, NUMBER_PRODUCTS
-from constants import API_TO_PRODUCT_FIELDS
+from constants import API_TO_PRODUCT_FIELDS, URL_GENERAL, LIST_GENERAL
 
 
 class DataApi:
