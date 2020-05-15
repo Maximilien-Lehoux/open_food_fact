@@ -15,7 +15,7 @@ CATEGORIES = ["produits-laitiers",
 
 # The number of products per category
 # the number of products blocks menu choices
-NUMBER_PRODUCTS = 50
+NUMBER_PRODUCTS = 20
 
 # the identifiers of the database as in the example and replace with yours.
 # HOST = "HOST"
