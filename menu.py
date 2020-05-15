@@ -1,3 +1,5 @@
+from configuration import CATEGORIES
+
 
 class Menu:
     def __init__(self):
@@ -20,8 +22,10 @@ class Menu:
         """when the choice "1" is made, the category menu displays the 5
         categories chosen in the configuration file"""
         choice = ""
-        while choice not in ["1", "2", "3", "4", "5"]:
+        while choice not in range(0, len(CATEGORIES)+1):
             choice = input("Choisissez une catégorie d'aliment : ")
+            choice = int(choice)
+        choice = str(choice)
         return choice
 
     def menu_products(self, number_products_saved):

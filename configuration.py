@@ -1,6 +1,3 @@
-
-
-
 # you can change the categories. If you don't know them all, go to this site
 # https://fr.openfoodfacts.org/categories
 # and note the category in lowercase without accent
@@ -18,7 +15,7 @@ CATEGORIES = ["produits-laitiers",
 
 # The number of products per category
 # the number of products blocks menu choices
-NUMBER_PRODUCTS = 20
+NUMBER_PRODUCTS = 50
 
 # the identifiers of the database as in the example and replace with yours.
 # HOST = "HOST"

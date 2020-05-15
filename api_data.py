@@ -1,12 +1,12 @@
 import requests
 
 from configuration import CATEGORIES, NUMBER_PRODUCTS
-from constants import API_TO_PRODUCT_FIELDS, URL_GENERAL, LIST_GENERAL
+from constants import API_TO_PRODUCT_FIELDS, URL_GENERAL
 
 
 class DataApi:
     """the request to the API which contains the parameters"""
-    def __init__(self, url):
+    def __init__(self, url=URL_GENERAL):
         self.payload_products = {
                             'action': 'process',
                             'tagtype_0': 'categories',
@@ -15,7 +15,7 @@ class DataApi:
                             'tagtype_1': 'nutrition_grade',
                             'tag_contains_1': 'contains',
                             'fields': ','.join(API_TO_PRODUCT_FIELDS.keys()),
-                            'page_size': '50',
+                            'page_size': NUMBER_PRODUCTS,
                             'json': 'true',
                             }
         self.response = requests.get(url, params=self.payload_products)

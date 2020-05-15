@@ -1,5 +1,5 @@
 import sys
-from tables_mysql import *
+from tables_mysql import CreateDataBase
 
 
 class DisplayData(CreateDataBase):
@@ -31,7 +31,7 @@ class DisplayData(CreateDataBase):
         if not results:
             print("Vous n'avez pas enregistré de produits.")
         else:
-            print("""Le premier produit noté entre guillemet est le substitut 
+            print("""Le premier produit noté entre guillemet est le substitut
             du deuxième :""")
             self.display_db_query_results(results)
 

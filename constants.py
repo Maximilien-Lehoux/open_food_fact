@@ -11,4 +11,3 @@ API_TO_PRODUCT_FIELDS = {
 # the address that allows you to use the open_food_fact API
 URL_GENERAL = 'https://fr.openfoodfacts.org/categorie/'
 
-LIST_GENERAL = []

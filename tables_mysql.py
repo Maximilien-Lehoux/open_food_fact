@@ -1,7 +1,6 @@
 import mysql.connector
 
-from configuration import USER, PASSWORD, HOST, DATABASE, CATEGORIES, \
-    NUMBER_PRODUCTS
+from configuration import USER, PASSWORD, HOST, DATABASE, CATEGORIES
 
 
 class CreateDataBase:
@@ -38,8 +37,8 @@ class CreateDataBase:
         self.connection.commit()
 
     def insert_product(self, product):
-        self.cursor.execute("""INSERT INTO Products (name, generic_name, url, 
-        store, nutriscore, categories_id) 
+        self.cursor.execute("""INSERT INTO Products (name, generic_name, url,
+        store, nutriscore, categories_id)
         VALUES (%s, %s, %s, %s, %s, %s)""",
                             (str(product[0]), str(product[1]), str(product[2]),
                              str(product[3]), str(product[4]),
@@ -86,4 +85,3 @@ class CreateDataBase:
             FROM substitute_choose INNER JOIN products ON products_id = id""")
         result = self.cursor.fetchall()
         return result
-
