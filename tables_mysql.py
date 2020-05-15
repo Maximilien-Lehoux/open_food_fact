@@ -37,6 +37,7 @@ class CreateDataBase:
         self.connection.commit()
 
     def insert_product(self, product):
+        """the product are inserted in the tables"""
         self.cursor.execute("""INSERT INTO Products (name, generic_name, url,
         store, nutriscore, categories_id)
         VALUES (%s, %s, %s, %s, %s, %s)""",
@@ -46,6 +47,7 @@ class CreateDataBase:
         self.connection.commit()
 
     def insert_products(self, products):
+        """the products are inserted in the tables"""
         for i in range(0, len(products)):
             self.insert_product(products[i])
 
@@ -62,11 +64,13 @@ class CreateDataBase:
         self.connection.commit()
 
     def get_categories(self):
+        """we recover the categories"""
         self.cursor.execute("""SELECT id, name  FROM categories""")
         result = self.cursor.fetchall()
         return result
 
     def get_products_from_category(self, category_id):
+        """we recover the products"""
         self.cursor.execute("""SELECT id, name, generic_name, nutriscore,
         store, url FROM products WHERE categories_id = {}"""
                             .format(category_id))
@@ -74,6 +78,7 @@ class CreateDataBase:
         return result
 
     def get_substitutes(self, category_id):
+        """we recover the substitutes"""
         self.cursor.execute("""SELECT id, name, generic_name, nutriscore,
                 store, url FROM products WHERE categories_id = {}
                 AND nutriscore = 'a'""".format(category_id))
@@ -81,6 +86,7 @@ class CreateDataBase:
         return result
 
     def get_substitutes_saved(self):
+        """we recover the substitutes saves"""
         self.cursor.execute("""SELECT substitute, name
             FROM substitute_choose INNER JOIN products ON products_id = id""")
         result = self.cursor.fetchall()

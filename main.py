@@ -18,6 +18,7 @@ class Main:
         self.init_program()
 
     def get_products_key(self):
+
         temporary_list = []
         i = 0
         while i < len(CATEGORIES):
@@ -36,6 +37,7 @@ class Main:
         self.my_tables.create_tables()
 
     def insert_data_tables_mysql(self):
+        """the data is inserted into the tables"""
         self.my_tables.insert_categories()
         self.my_tables.insert_products(self.products)
 
@@ -62,17 +64,20 @@ class Main:
                                                number_products_choice)
 
     def display_data_choice2(self):
+        """data is displayed in the console"""
         # the user chooses "2" to see his registered substitutes
         if self.main_choice == "2":
             self.display_data.display_substitutes_saved()
 
     def display_data_choice3(self):
+        """data is displayed in the console"""
         # the user chooses "3" to reset the database
         if self.main_choice == "3":
             self.create_tables_open_food_fact()
             self.insert_data_tables_mysql()
 
     def display_data_choice4(self):
+        """data is displayed in the console"""
         # the user chooses "4" to exit the program
         if self.main_choice == "4":
             sys.exit(0)

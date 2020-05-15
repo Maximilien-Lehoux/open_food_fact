@@ -13,10 +13,12 @@ class DisplayData(CreateDataBase):
         self.display_db_query_results(results)
 
     def display_products_from_category(self, category_id):
+        """products are displayed"""
         results = self.get_products_from_category(category_id)
         self.display_db_query_results(results)
 
     def display_substitutes(self, category_id):
+        """possibles substitutes are displayed"""
         results = self.get_substitutes(category_id)
         if not results:
             print("Il n'y a pas de subsituts en nutriscore 'a', vous pouvez "
@@ -36,5 +38,6 @@ class DisplayData(CreateDataBase):
             self.display_db_query_results(results)
 
     def display_db_query_results(self, results):
+        """method to display data"""
         for x in results:
             print(x)
